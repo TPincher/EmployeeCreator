@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import Employee.Creator.exceptions.ServiceValidationException;
 import jakarta.validation.Valid;
 
 @RestController
@@ -18,7 +19,7 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 	
 	@PostMapping
-	public ResponseEntity<Employee> createTask(@Valid @RequestBody CreateEmployeeDTO data) throws ServiceValidationException {
+	public ResponseEntity<Employee> createEmployee(@Valid @RequestBody CreateEmployeeDTO data) throws ServiceValidationException {
 		Employee createdEmployee = this.employeeService.createEmployee(data);
 		return new ResponseEntity<>(createdEmployee, HttpStatus.CREATED);
 	}

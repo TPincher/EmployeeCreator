@@ -33,17 +33,17 @@ public class Employee {
 	private String email;
 	
 	@Column (unique = true)
-	private String mobileNumber;
+	private int mobileNumber;
 	
 	@Column (unique = true)
 	private String address;
 	
 	@Column
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date startdate;
+	@Temporal(TemporalType.DATE)
+	private Date startDate;
 	
 	@Column
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date endDate;
 	
 	@Column
@@ -84,11 +84,11 @@ public class Employee {
 		this.email = email;
 	}
 
-	public String getMobileNumber() {
+	public int getMobileNumber() {
 		return mobileNumber;
 	}
 
-	public void setMobileNumber(String mobileNumber) {
+	public void setMobileNumber(int mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 
@@ -101,11 +101,11 @@ public class Employee {
 	}
 
 	public Date getStartdate() {
-		return startdate;
+		return startDate;
 	}
 
 	public void setStartdate(Date startdate) {
-		this.startdate = startdate;
+		this.startDate = startdate;
 	}
 
 	public Date getEndDate() {

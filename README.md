@@ -40,6 +40,9 @@ Change logs
 
     Write a paragraph labelled with the date every day you work on the project to discuss what you've done for the say. Be specific about the changes that have happened for that day.
 
+    21/03/2024
+    Created the 'employees' table in the backend, with controller, service and repo. Yet to add the 'type' table and link it over, once that's hooked up it'll be time to move on to the front end side of the application.
+
 What did you struggle with?
 
     What? Why? How?
