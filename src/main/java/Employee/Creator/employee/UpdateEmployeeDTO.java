@@ -3,41 +3,31 @@ package Employee.Creator.employee;
 import java.util.Date;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Pattern;
 
-public class CreateEmployeeDTO {
 
-	@NotBlank
-	@NotNull
+
+public class UpdateEmployeeDTO {
+
+	@Pattern(regexp = "^(?=\\S).*$", message = "First name cannot be empty")
 	private String firstName;
-	
-	@NotBlank
-	@NotNull
+
+	@Pattern(regexp = "^(?=\\S).*$", message = "Last name cannot be empty")
 	private String lastName;
 	
-	@NotBlank
-	@NotNull
 	@Email
 	private String email;
 	
-	@NotNull
-	@Positive
 	private Long mobileNumber;
 	
-	@NotBlank
-	@NotNull
 	private String address;
 	
 	private Date startDate;
 	
 	private Date endDate;
 	
-	@NotNull
 	private boolean currentlyEmployed;
 	
-	@NotNull
 	private Long employmentType;
 
 	public String getFirstName() {
@@ -108,11 +98,9 @@ public class CreateEmployeeDTO {
 		return employmentType;
 	}
 
-	public void setEmploymentType(Long employmentType) {
-		this.employmentType = employmentType;
+	public void setEmploymentType(Long employmentTypeId) {
+		this.employmentType = employmentTypeId;
 	}
-	
-	
 	
 	
 }

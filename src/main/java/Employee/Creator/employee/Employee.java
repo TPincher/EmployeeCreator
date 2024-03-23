@@ -2,11 +2,17 @@ package Employee.Creator.employee;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import Employee.Creator.employmentType.EmploymentType;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -16,7 +22,6 @@ import jakarta.persistence.TemporalType;
 public class Employee {
 	
 	public Employee() {
-		
 	}
 	
 	@Id
@@ -33,7 +38,7 @@ public class Employee {
 	private String email;
 	
 	@Column (unique = true)
-	private int mobileNumber;
+	private Long mobileNumber;
 	
 	@Column (unique = true)
 	private String address;
@@ -49,8 +54,10 @@ public class Employee {
 	@Column
 	private Boolean currentlyEmployed;
 	
-	@Column
-	private int employmentType;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "employmentType_id")
+	@JsonIgnoreProperties("employees")
+	private EmploymentType employmentType;
 	
 	public Long getId() {
 		return id;
@@ -84,11 +91,11 @@ public class Employee {
 		this.email = email;
 	}
 
-	public int getMobileNumber() {
+	public Long getMobileNumber() {
 		return mobileNumber;
 	}
 
-	public void setMobileNumber(int mobileNumber) {
+	public void setMobileNumber(Long mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 
@@ -124,11 +131,11 @@ public class Employee {
 		this.currentlyEmployed = currentlyEmployed;
 	}
 
-	public int getEmploymentType() {
+	public EmploymentType getEmploymentType() {
 		return employmentType;
 	}
 
-	public void setEmploymentType(int employmentType) {
+	public void setEmploymentType(EmploymentType employmentType) {
 		this.employmentType = employmentType;
 	}
 
