@@ -50,6 +50,10 @@ Change logs
     Data successfully being called - will check all CRUD tomorrow but it's working in Postman so no problems expected.
     Majority of work from here on out will be styling and testing
 
+    24/03/2024
+    Added both contexts in to the front-end, feels like I'm really getting the hang of TypeScript.
+    Added in icon library, and had a few more ideas to add to the project. A 'notes' section on the employee should be put in, but means I'll be messing around with the back-end again. Might implement it if I have time, but IRL it may be abstracted out to a HR application, where this could be seen as more of a 'time and attendance' app. Zod schema updated, needs a bit more work.
+
 What did you struggle with?
 
     What? Why? How?
