@@ -54,6 +54,9 @@ Change logs
     Added both contexts in to the front-end, feels like I'm really getting the hang of TypeScript.
     Added in icon library, and had a few more ideas to add to the project. A 'notes' section on the employee should be put in, but means I'll be messing around with the back-end again. Might implement it if I have time, but IRL it may be abstracted out to a HR application, where this could be seen as more of a 'time and attendance' app. Zod schema updated, needs a bit more work.
 
+    24/06/204
+    Spent a lot of time today debugging the context calls interacting with the form, specifically with pre-filling it based on a selected user. The 'currently-employed' boolean is still not working correctly, and I want to reinforce the zod schema. Once that's done, it's onto implementing the delete functionality which should be easy. Started the styling today and found an appropriate font - there won't be too much visual jazz to this project so will hopefully have that completed tomorrow.
+
 What did you struggle with?
 
     What? Why? How?

@@ -1,18 +1,20 @@
 import { createContext, useEffect, useState, ReactNode } from "react";
 import { Employee, getAllEmployees } from "../services/employee-service";
 
-interface StatusContextProps {
+interface EmployeesContextProps {
   children: ReactNode;
 }
 
-interface StatusContextValue {
+interface EmployeesContextValue {
   employees: Employee[];
   setEmployees: (updatedEmployees: Employee[]) => void;
 }
 
-export const StatusContext = createContext<StatusContextValue | null>(null);
+export const EmployeesContext = createContext<EmployeesContextValue | null>(
+  null
+);
 
-const StatusContextProvider = ({ children }: StatusContextProps) => {
+const EmployeesContextProvider = ({ children }: EmployeesContextProps) => {
   const [employees, setEmployees] = useState<Employee[]>([]);
 
   useEffect(() => {
@@ -22,10 +24,10 @@ const StatusContextProvider = ({ children }: StatusContextProps) => {
   }, []);
 
   return (
-    <StatusContext.Provider value={{ employees, setEmployees }}>
+    <EmployeesContext.Provider value={{ employees, setEmployees }}>
       {children}
-    </StatusContext.Provider>
+    </EmployeesContext.Provider>
   );
 };
 
-export default StatusContextProvider;
+export default EmployeesContextProvider;

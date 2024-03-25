@@ -15,7 +15,6 @@ export const getAllEmploymentTypes = async () => {
     throw new Error("Failed to get types");
   }
   const typeData = await response.json();
-  console.log(typeData);
   return typeData;
 };
 

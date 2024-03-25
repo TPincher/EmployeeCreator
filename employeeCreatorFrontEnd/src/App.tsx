@@ -4,6 +4,9 @@ import Page from "./containers/Page/Page";
 import { useEffect } from "react";
 import { getAllEmployees } from "./services/employee-service";
 import { getAllEmploymentTypes } from "./services/type-service";
+import EmployeesContextProvider from "./context/EmployeesContext";
+import EmploymentTypesContextProvider from "./context/EmploymentTypesContext";
+import ActiveEmployeeContextProvider from "./context/ActiveEmployeeContext";
 
 function App() {
   useEffect(() => {
@@ -15,14 +18,20 @@ function App() {
   }, []);
 
   return (
-    <main>
-      <Page />
-      <ToastContainer
-        position="bottom-center"
-        autoClose={1000}
-        hideProgressBar={true}
-      />
-    </main>
+    <EmployeesContextProvider>
+      <EmploymentTypesContextProvider>
+        <ActiveEmployeeContextProvider>
+          <main>
+            <Page />
+            <ToastContainer
+              position="bottom-center"
+              autoClose={1000}
+              hideProgressBar={true}
+            />
+          </main>
+        </ActiveEmployeeContextProvider>
+      </EmploymentTypesContextProvider>
+    </EmployeesContextProvider>
   );
 }
 

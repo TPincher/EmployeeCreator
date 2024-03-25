@@ -1,2 +1,17 @@
-#root {
+@import url("https://fonts.googleapis.com/css2?family=Workbench:SCAN@-20&display=swap");
+
+#root,
+.body,
+.html {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: black;
+  color: lightgreen;
+  font-family: "Workbench", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 20px;
+  font-variation-settings: "BLED" 0, "SCAN" 0;
 }

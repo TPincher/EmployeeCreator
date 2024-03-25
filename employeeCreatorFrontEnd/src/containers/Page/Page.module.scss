@@ -1,4 +1,9 @@
 .mainDisplay {
+  position: relative;
+  left: 0;
+  top: 0;
+  border: 1vw solid rgb(65, 65, 65);
+  border-radius: 5%;
   width: 100vw;
   height: 100vh;
   display: flex;

@@ -4,18 +4,21 @@ import {
   getAllEmploymentTypes,
 } from "../services/type-service";
 
-interface StatusContextProps {
+interface EmploymentTypesContextProps {
   children: ReactNode;
 }
 
-interface StatusContextValue {
+interface EmploymentTypesContextValue {
   employmentTypes: employmentType[];
   setEmploymentTypes: (updatedEmploymentTypes: employmentType[]) => void;
 }
 
-export const StatusContext = createContext<StatusContextValue | null>(null);
+export const EmploymentTypesContext =
+  createContext<EmploymentTypesContextValue | null>(null);
 
-const StatusContextProvider = ({ children }: StatusContextProps) => {
+const EmploymentTypesContextProvider = ({
+  children,
+}: EmploymentTypesContextProps) => {
   const [employmentTypes, setEmploymentTypes] = useState<employmentType[]>([]);
 
   useEffect(() => {
@@ -25,10 +28,12 @@ const StatusContextProvider = ({ children }: StatusContextProps) => {
   }, []);
 
   return (
-    <StatusContext.Provider value={{ employmentTypes, setEmploymentTypes }}>
+    <EmploymentTypesContext.Provider
+      value={{ employmentTypes, setEmploymentTypes }}
+    >
       {children}
-    </StatusContext.Provider>
+    </EmploymentTypesContext.Provider>
   );
 };
 
-export default StatusContextProvider;
+export default EmploymentTypesContextProvider;

@@ -107,12 +107,12 @@ public class Employee {
 		this.address = address;
 	}
 
-	public Date getStartdate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	public void setStartdate(Date startdate) {
-		this.startDate = startdate;
+	public void setStartdate(Date startDate) {
+		this.startDate = startDate;
 	}
 
 	public Date getEndDate() {

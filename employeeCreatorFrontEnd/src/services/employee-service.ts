@@ -24,7 +24,6 @@ export const getAllEmployees = async () => {
     throw new Error("Failed to get tasks");
   }
   const employeeData = await response.json();
-  console.log(employeeData);
   return employeeData;
 };
 
