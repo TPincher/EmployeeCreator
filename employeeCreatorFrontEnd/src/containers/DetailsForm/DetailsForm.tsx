@@ -5,16 +5,56 @@ import { schema } from "./schema";
 import { useContext, useEffect } from "react";
 import { EmploymentTypesContext } from "../../context/EmploymentTypesContext";
 import { ActiveEmployeeContext } from "../../context/ActiveEmployeeContext";
+import { ModeContext } from "../../context/ModeContext";
+import { EmployeesContext } from "../../context/EmployeesContext";
 
 const DetailsForm = ({ submit, formType = "Create" }) => {
   const { activeEmployee } = useContext(ActiveEmployeeContext);
   const { employmentTypes } = useContext(EmploymentTypesContext);
+  const { employees } = useContext(EmployeesContext);
+  const { mode } = useContext(ModeContext);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(schema) });
 
   useEffect(() => {
-    console.log(activeEmployee);
-  }, [activeEmployee]);
+    if (activeEmployee) {
+      reset({
+        id: activeEmployee.id || "",
+        firstName: activeEmployee.firstName || "",
+        lastName: activeEmployee.lastName || "",
+        email: activeEmployee.email || "",
+        mobileNumber: activeEmployee.mobileNumber || "",
+        address: activeEmployee.address || "",
+        startDate: activeEmployee.startDate || "",
+        endDate: activeEmployee.endDate || "",
+        employmentType: activeEmployee.employmentType.id || "",
+        currentlyEmployed: activeEmployee.currentlyEmployed || "",
+      });
+    }
+
+    if (mode === "add") {
+      reset({
+        id: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        mobileNumber: "",
+        address: "",
+        startDate: "",
+        endDate: "",
+        employmentType: "",
+        currentlyEmployed: "",
+      });
+    }
+  }, [activeEmployee, employees, reset, mode]);
 
   let preloadedValues = {
+    idNumber: activeEmployee?.id || "",
     firstName: activeEmployee?.firstName || "",
     lastName: activeEmployee?.lastName || "",
     email: activeEmployee?.email || "",
@@ -26,16 +66,22 @@ const DetailsForm = ({ submit, formType = "Create" }) => {
     currentlyEmployed: activeEmployee?.currentlyEmployed || "",
   };
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({ resolver: zodResolver(schema) });
-
   return (
     <form className={styles.formContainer} onSubmit={handleSubmit(submit)}>
       <div className={styles.TaskLine}>
-        <label htmlFor="firstNameInput">First name</label>
+        <label htmlFor="IDInput">ID:</label>
+        <input
+          type="text"
+          id="IDInput"
+          defaultValue={preloadedValues.idNumber}
+          {...register("id")}
+          disabled
+          className={styles.Field}
+        />
+      </div>
+
+      <div className={styles.TaskLine}>
+        <label htmlFor="firstNameInput">First name:</label>
         <input
           type="text"
           id="firstNameInput"
@@ -46,7 +92,7 @@ const DetailsForm = ({ submit, formType = "Create" }) => {
       </div>
 
       <div className={styles.TaskLine}>
-        <label htmlFor="lastNameInput">Last name</label>
+        <label htmlFor="lastNameInput">Last name:</label>
         <input
           type="text"
           defaultValue={preloadedValues.lastName}
@@ -57,7 +103,7 @@ const DetailsForm = ({ submit, formType = "Create" }) => {
       </div>
 
       <div className={styles.TaskLine}>
-        <label htmlFor="emailInput">Email Address</label>
+        <label htmlFor="emailInput">Email Address:</label>
         <input
           type="text"
           defaultValue={preloadedValues.email}
@@ -68,7 +114,7 @@ const DetailsForm = ({ submit, formType = "Create" }) => {
       </div>
 
       <div className={styles.TaskLine}>
-        <label htmlFor="mobileInput">Mobile Number</label>
+        <label htmlFor="mobileInput">Mobile Number:</label>
         <input
           type="number"
           defaultValue={preloadedValues.mobileNumber}
@@ -79,7 +125,7 @@ const DetailsForm = ({ submit, formType = "Create" }) => {
       </div>
 
       <div className={styles.TaskLine}>
-        <label htmlFor="addressInput">Address</label>
+        <label htmlFor="addressInput">Address:</label>
         <input
           type="text"
           defaultValue={preloadedValues.address}
@@ -90,7 +136,7 @@ const DetailsForm = ({ submit, formType = "Create" }) => {
       </div>
 
       <div className={styles.TaskLine}>
-        <label htmlFor="startDateInput">Employment Start Date</label>
+        <label htmlFor="startDateInput">Contract Start Date:</label>
         <input
           type="date"
           defaultValue={preloadedValues.startDate}
@@ -101,7 +147,7 @@ const DetailsForm = ({ submit, formType = "Create" }) => {
       </div>
 
       <div className={styles.TaskLine}>
-        <label htmlFor="endDateInput">Employment End Date</label>
+        <label htmlFor="endDateInput">Contract End Date:</label>
         <input
           type="date"
           defaultValue={preloadedValues.endDate}
@@ -112,7 +158,7 @@ const DetailsForm = ({ submit, formType = "Create" }) => {
       </div>
 
       <div className={styles.TaskLine}>
-        <label>Employment Type</label>
+        <label>Employment Type:</label>
         <select
           defaultValue={preloadedValues.employmentType}
           {...register("employmentType")}

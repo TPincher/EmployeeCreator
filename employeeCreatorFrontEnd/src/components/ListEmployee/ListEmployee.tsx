@@ -7,6 +7,7 @@ interface CardProps {
   onClick?: Function;
   key: number;
   id: number;
+  employeeID: number;
   firstName: string;
   lastName: string;
 }
@@ -25,7 +26,7 @@ const ListEmployee = (props: CardProps) => {
       className={styles.employeeCard}
     >
       <p>
-        {props.id}, {props.lastName}, {props.firstName}
+        Employee {props.employeeID} - {props.lastName}, {props.firstName}
       </p>
     </article>
   );

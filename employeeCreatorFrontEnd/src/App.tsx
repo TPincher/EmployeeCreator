@@ -7,6 +7,7 @@ import { getAllEmploymentTypes } from "./services/type-service";
 import EmployeesContextProvider from "./context/EmployeesContext";
 import EmploymentTypesContextProvider from "./context/EmploymentTypesContext";
 import ActiveEmployeeContextProvider from "./context/ActiveEmployeeContext";
+import ModeContextProvider from "./context/ModeContext";
 
 function App() {
   useEffect(() => {
@@ -18,20 +19,22 @@ function App() {
   }, []);
 
   return (
-    <EmployeesContextProvider>
-      <EmploymentTypesContextProvider>
-        <ActiveEmployeeContextProvider>
-          <main>
-            <Page />
-            <ToastContainer
-              position="bottom-center"
-              autoClose={1000}
-              hideProgressBar={true}
-            />
-          </main>
-        </ActiveEmployeeContextProvider>
-      </EmploymentTypesContextProvider>
-    </EmployeesContextProvider>
+    <ModeContextProvider>
+      <EmployeesContextProvider>
+        <EmploymentTypesContextProvider>
+          <ActiveEmployeeContextProvider>
+            <main>
+              <Page />
+              <ToastContainer
+                position="bottom-center"
+                autoClose={1000}
+                hideProgressBar={true}
+              />
+            </main>
+          </ActiveEmployeeContextProvider>
+        </EmploymentTypesContextProvider>
+      </EmployeesContextProvider>
+    </ModeContextProvider>
   );
 }
 
