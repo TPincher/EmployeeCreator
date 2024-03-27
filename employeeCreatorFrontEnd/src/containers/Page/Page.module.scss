@@ -2,10 +2,10 @@
   position: relative;
   left: 0;
   top: 0;
-  border: 1vw solid rgb(65, 65, 65);
-  border-radius: 5%;
-  width: 100vw;
-  height: 100vh;
+  border: solid rgb(65, 65, 65);
+  border-width: 2.5vh 2.5vw;
+  width: 95vw;
+  height: 95vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

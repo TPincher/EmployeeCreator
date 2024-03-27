@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { employmentType } from "./type-service";
 
 export interface Employee {
-  id: number;
+  id?: number;
   firstName: string;
   lastName: string;
   email: string;
@@ -11,7 +11,8 @@ export interface Employee {
   address: string;
   startDate: Date;
   endDate: Date;
-  employmentType: employmentType;
+  employmentType: employmentType | number;
+  currentlyEmployed: boolean;
 }
 
 const successNotify = (message: String) => toast.success(message);

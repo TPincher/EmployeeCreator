@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { EmployeesContext } from "../../context/EmployeesContext";
 import {
   addEmployee,
@@ -25,10 +25,11 @@ const Page = () => {
   const { setEmployees } = employeesContext;
   const { activeEmployee } = activeEmployeeContext;
   const { mode } = modeContext;
+  const [activeFilters, setActiveFilters] = useState([]);
 
   useEffect(() => {
     getAllEmployees().then((data) => setEmployees(data));
-  }, [setEmployees]);
+  }, [setEmployees, activeFilters]);
 
   const submit = async (data: any) => {
     const id: number = activeEmployee.id;
@@ -59,7 +60,7 @@ const Page = () => {
   return (
     <div className={styles.mainDisplay}>
       <Menu />
-      <List />
+      <List activeFilters={activeFilters} setActiveFilters={setActiveFilters} />
       <DetailsForm submit={submit} />
     </div>
   );

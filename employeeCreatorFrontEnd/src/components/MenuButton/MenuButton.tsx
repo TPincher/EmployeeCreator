@@ -9,16 +9,24 @@ interface Props {
 }
 
 const MenuButton = (props: Props) => {
-  const { mode, setMode } = useContext(ModeContext);
+  const modeContext = useContext(ModeContext);
+
+  if (!modeContext) {
+    return <div>Error: Context data not available</div>;
+  }
+
+  const { setMode } = modeContext;
 
   const handleClick = () => {
     setMode(props.modeType);
   };
 
   return (
-    <div className={styles.menuButton}>
-      <IconContext.Provider value={{ color: "black", size: "4em" }}>
-        <button onClick={handleClick}>{props.icon}</button>
+    <div>
+      <IconContext.Provider value={{ color: "black", size: "30%" }}>
+        <button onClick={handleClick} className={styles.menuButton}>
+          {props.icon}
+        </button>
       </IconContext.Provider>
     </div>
   );

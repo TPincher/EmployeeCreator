@@ -1,3 +1,4 @@
+// import { useEffect } from "react";
 import Filter from "../Filter/Filter";
 import styles from "./ListHeader.module.scss";
 
@@ -11,7 +12,6 @@ interface Props {
 
 const ListHeader = (props: Props) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
     props.setSearchTerm(e.target.value);
   };
 
@@ -24,27 +24,28 @@ const ListHeader = (props: Props) => {
       props.activeFilters.splice(index, 1);
     }
     props.setActiveFilters(props.activeFilters);
-    console.log(props.activeFilters);
   };
 
   const listToFilter: string[] = props.filterList;
 
+  // useEffect(() => {}, [listToFilter, props.activeFilters]);
+
   return (
     <div className={styles.headerContainer}>
       <h1>{props.headerTitle} employees</h1>
-      {props.headerTitle !== "filter" && (
-        <input
-          type="text"
-          className={styles.inputBox}
-          onChange={handleChange}
-        ></input>
-      )}
+      Filter:
+      <input
+        type="text"
+        className={styles.inputBox}
+        onChange={handleChange}
+      ></input>
       {props.headerTitle === "filter" && (
         <div>
           {listToFilter &&
-            listToFilter.map((filterItem) => {
+            listToFilter.map((filterItem, key: number) => {
               return (
                 <Filter
+                  key={key}
                   toggleFilters={toggleFilters}
                   filterItem={filterItem}
                   filterList={props.filterList}

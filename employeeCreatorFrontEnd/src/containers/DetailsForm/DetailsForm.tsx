@@ -8,11 +8,25 @@ import { ActiveEmployeeContext } from "../../context/ActiveEmployeeContext";
 import { ModeContext } from "../../context/ModeContext";
 import { EmployeesContext } from "../../context/EmployeesContext";
 
-const DetailsForm = ({ submit, formType = "Create" }) => {
-  const { activeEmployee } = useContext(ActiveEmployeeContext);
-  const { employmentTypes } = useContext(EmploymentTypesContext);
-  const { employees } = useContext(EmployeesContext);
-  const { mode } = useContext(ModeContext);
+const DetailsForm = ({ submit }) => {
+  const activeEmployeeContext = useContext(ActiveEmployeeContext);
+  const employmentTypesContext = useContext(EmploymentTypesContext);
+  const employeesContext = useContext(EmployeesContext);
+  const modeContext = useContext(ModeContext);
+
+  if (
+    !activeEmployeeContext ||
+    !employmentTypesContext ||
+    !employeesContext ||
+    !modeContext
+  ) {
+    return <div>Error: Context data not available</div>;
+  }
+
+  const { activeEmployee } = activeEmployeeContext;
+  const { employmentTypes } = employmentTypesContext;
+  const { employees } = employeesContext;
+  const { mode } = modeContext;
 
   const {
     register,
@@ -40,11 +54,11 @@ const DetailsForm = ({ submit, formType = "Create" }) => {
     if (mode === "add") {
       reset({
         id: "",
-        firstName: "",
-        lastName: "",
-        email: "",
-        mobileNumber: "",
-        address: "",
+        firstName: "enter first name",
+        lastName: "enter last name",
+        email: "enter email",
+        mobileNumber: 400000000,
+        address: "enter address",
         startDate: "",
         endDate: "",
         employmentType: "",
@@ -164,7 +178,11 @@ const DetailsForm = ({ submit, formType = "Create" }) => {
           {...register("employmentType")}
         >
           {employmentTypes.map((employmentType: any) => (
-            <option key={employmentType.id} value={employmentType.id}>
+            <option
+              key={employmentType.id}
+              value={employmentType.id}
+              className={styles.optionSelector}
+            >
               {employmentType.name}
             </option>
           ))}
@@ -178,13 +196,17 @@ const DetailsForm = ({ submit, formType = "Create" }) => {
           defaultValue={preloadedValues.currentlyEmployed}
           id="activeSelector"
           {...register("currentlyEmployed")}
-          className={styles.Field}
+          className={styles.checkbox}
         />
       </div>
 
-      <button>
-        {formType === "Create" ? "Add new employee" : "Update Task"}
-      </button>
+      {(mode === "add" || mode === "edit" || mode === "delete") && (
+        <button className={styles.formButton}>
+          {mode === "add" && "Add new employee"}
+          {mode === "edit" && "edit employee details"}
+          {mode === "delete" && "delete employee"}
+        </button>
+      )}
     </form>
   );
 };

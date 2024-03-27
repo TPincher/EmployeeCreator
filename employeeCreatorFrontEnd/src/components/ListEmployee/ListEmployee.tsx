@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import styles from "./ListEmployee.module.scss";
 import { ActiveEmployeeContext } from "../../context/ActiveEmployeeContext";
 import { EmployeesContext } from "../../context/EmployeesContext";
@@ -13,8 +13,15 @@ interface CardProps {
 }
 
 const ListEmployee = (props: CardProps) => {
-  const { setActiveEmployee } = useContext(ActiveEmployeeContext);
-  const { employees } = useContext(EmployeesContext);
+  const activeEmployeeContext = useContext(ActiveEmployeeContext);
+  const employeesContext = useContext(EmployeesContext);
+
+  if (!activeEmployeeContext || !employeesContext) {
+    return <div>Error: Context data not available</div>;
+  }
+
+  const { setActiveEmployee } = activeEmployeeContext;
+  const { employees } = employeesContext;
 
   const handleClick = (id: number) => {
     setActiveEmployee(employees[id]);

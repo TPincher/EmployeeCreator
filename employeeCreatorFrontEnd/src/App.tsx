@@ -29,6 +29,8 @@ function App() {
                 position="bottom-center"
                 autoClose={1000}
                 hideProgressBar={true}
+                theme="dark"
+                limit={1}
               />
             </main>
           </ActiveEmployeeContextProvider>

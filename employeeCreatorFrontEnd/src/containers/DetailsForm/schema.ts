@@ -7,8 +7,8 @@ export const schema = z.object({
   mobileNumber: z.coerce
     .number()
     .int()
-    .gte(400000000, "mobile number is 04xx xxx xxx format")
-    .lte(499999999, "mobile number is 04xx xxx xxx format"),
+    .gte(400000000, "mobile number must be 04xx xxx xxx format")
+    .lte(499999999, "mobile number must be 04xx xxx xxx format"),
   address: z.string().min(3, "error message here"),
   startDate: z.string().min(5, "error message here"),
   endDate: z.string().min(5, "error message here"),
