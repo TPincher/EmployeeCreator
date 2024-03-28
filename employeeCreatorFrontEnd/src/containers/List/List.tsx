@@ -1,10 +1,11 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import styles from "./List.module.scss";
 import { EmployeesContext } from "../../context/EmployeesContext";
 import { Employee } from "../../services/employee-service";
 import ListEmployee from "../../components/ListEmployee/ListEmployee";
 import ListHeader from "../../components/ListHeader/ListHeader";
 import { ModeContext } from "../../context/ModeContext";
+import { employmentType } from "../../services/type-service";
 
 interface Props {
   activeFilters: string[];
@@ -42,6 +43,11 @@ const List = (props: Props) => {
       />
       {employees &&
         employees.map((employee: Employee, id: number) => {
+          const employmentTypeName = (employee.employmentType as employmentType)
+            ?.name;
+          // {
+          //   console.log(employmentTypeName);
+          // }
           return (
             (employee.firstName
               .toLowerCase()
@@ -49,7 +55,7 @@ const List = (props: Props) => {
               employee.lastName
                 .toLowerCase()
                 .includes(searchTerm.toLowerCase())) &&
-            props.activeFilters.includes(employee.employmentType.name) && (
+            props.activeFilters.includes(employmentTypeName) && (
               <ListEmployee
                 key={id}
                 id={id}
