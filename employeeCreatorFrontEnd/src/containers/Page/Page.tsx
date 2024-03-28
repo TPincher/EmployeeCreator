@@ -32,7 +32,7 @@ const Page = () => {
   }, [setEmployees, activeFilters]);
 
   const submit = async (data: any) => {
-    const id: number = activeEmployee.id;
+    const id: number = activeEmployee.id !== undefined ? activeEmployee.id : 0;
     console.log(data);
     console.log(mode);
     try {

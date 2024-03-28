@@ -8,7 +8,7 @@ import { ActiveEmployeeContext } from "../../context/ActiveEmployeeContext";
 import { ModeContext } from "../../context/ModeContext";
 import { EmployeesContext } from "../../context/EmployeesContext";
 
-const DetailsForm = ({ submit }) => {
+const DetailsForm = ({ submit }: any) => {
   const activeEmployeeContext = useContext(ActiveEmployeeContext);
   const employmentTypesContext = useContext(EmploymentTypesContext);
   const employeesContext = useContext(EmployeesContext);
@@ -32,7 +32,7 @@ const DetailsForm = ({ submit }) => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    // formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
   useEffect(() => {
@@ -46,7 +46,10 @@ const DetailsForm = ({ submit }) => {
         address: activeEmployee.address || "",
         startDate: activeEmployee.startDate || "",
         endDate: activeEmployee.endDate || "",
-        employmentType: activeEmployee.employmentType.id || "",
+        employmentType:
+          typeof activeEmployee.employmentType === "object"
+            ? activeEmployee.employmentType.id || ""
+            : "",
         currentlyEmployed: activeEmployee.currentlyEmployed || "",
       });
     }

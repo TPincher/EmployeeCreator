@@ -7,7 +7,7 @@ interface CardProps {
   onClick?: Function;
   key: number;
   id: number;
-  employeeID: number;
+  employeeID: number | undefined;
   firstName: string;
   lastName: string;
 }

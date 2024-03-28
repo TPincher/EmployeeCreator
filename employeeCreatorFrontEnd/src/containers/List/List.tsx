@@ -25,11 +25,11 @@ const List = (props: Props) => {
   const filters: string[] = ["casual", "part-time", "full-time"];
   const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => {
-    console.log(mode);
-    console.log(employees);
-    console.log("Active Filters:", props.activeFilters);
-  }, [searchTerm]);
+  // useEffect(() => {
+  //   console.log(mode);
+  //   console.log(employees);
+  //   console.log("Active Filters:", props.activeFilters);
+  // }, [searchTerm]);
 
   return (
     <div className={styles.listContainer}>
