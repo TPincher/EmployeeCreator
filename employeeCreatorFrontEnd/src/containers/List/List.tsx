@@ -34,20 +34,19 @@ const List = (props: Props) => {
 
   return (
     <div className={styles.listContainer}>
-      <ListHeader
-        headerTitle={mode}
-        setSearchTerm={setSearchTerm}
-        filterList={filters}
-        activeFilters={props.activeFilters}
-        setActiveFilters={props.setActiveFilters}
-      />
+      <div>
+        <ListHeader
+          headerTitle={mode}
+          setSearchTerm={setSearchTerm}
+          filterList={filters}
+          activeFilters={props.activeFilters}
+          setActiveFilters={props.setActiveFilters}
+        />
+      </div>
       {employees &&
         employees.map((employee: Employee, id: number) => {
           const employmentTypeName = (employee.employmentType as employmentType)
             ?.name;
-          // {
-          //   console.log(employmentTypeName);
-          // }
           return (
             (employee.firstName
               .toLowerCase()

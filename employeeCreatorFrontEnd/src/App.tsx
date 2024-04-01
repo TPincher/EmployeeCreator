@@ -8,6 +8,7 @@ import EmployeesContextProvider from "./context/EmployeesContext";
 import EmploymentTypesContextProvider from "./context/EmploymentTypesContext";
 import ActiveEmployeeContextProvider from "./context/ActiveEmployeeContext";
 import ModeContextProvider from "./context/ModeContext";
+import ConsoleMessageContextProvider from "./context/ConsoleMessageContext";
 
 function App() {
   useEffect(() => {
@@ -20,22 +21,24 @@ function App() {
 
   return (
     <ModeContextProvider>
-      <EmployeesContextProvider>
-        <EmploymentTypesContextProvider>
-          <ActiveEmployeeContextProvider>
-            <main>
-              <Page />
-              <ToastContainer
-                position="bottom-center"
-                autoClose={1000}
-                hideProgressBar={true}
-                theme="dark"
-                limit={1}
-              />
-            </main>
-          </ActiveEmployeeContextProvider>
-        </EmploymentTypesContextProvider>
-      </EmployeesContextProvider>
+      <ConsoleMessageContextProvider>
+        <EmployeesContextProvider>
+          <EmploymentTypesContextProvider>
+            <ActiveEmployeeContextProvider>
+              <main>
+                <Page />
+                <ToastContainer
+                  position="bottom-center"
+                  autoClose={1000}
+                  hideProgressBar={true}
+                  theme="dark"
+                  limit={1}
+                />
+              </main>
+            </ActiveEmployeeContextProvider>
+          </EmploymentTypesContextProvider>
+        </EmployeesContextProvider>
+      </ConsoleMessageContextProvider>
     </ModeContextProvider>
   );
 }

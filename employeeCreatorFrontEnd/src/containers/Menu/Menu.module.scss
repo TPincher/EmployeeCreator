@@ -3,7 +3,7 @@
   width: 20vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .testButton {
@@ -32,4 +32,17 @@
     rgb(110, 110, 110) 20%,
     rgb(25, 25, 25) 100%
   );
+}
+
+.console {
+  overflow-y: auto;
+  border: none;
+  font-size: small;
+  width: 84%;
+  padding: 3%;
+  border-right: 1px solid rgb(150, 150, 150);
+  border-bottom: 1px solid rgb(150, 150, 150);
+  height: 40%;
+  background: black;
+  resize: none;
 }

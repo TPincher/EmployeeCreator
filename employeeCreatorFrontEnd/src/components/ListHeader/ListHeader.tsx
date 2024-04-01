@@ -39,23 +39,21 @@ const ListHeader = (props: Props) => {
         className={styles.inputBox}
         onChange={handleChange}
       ></input>
-      {props.headerTitle === "filter" && (
-        <div>
-          {listToFilter &&
-            listToFilter.map((filterItem, key: number) => {
-              return (
-                <Filter
-                  key={key}
-                  toggleFilters={toggleFilters}
-                  filterItem={filterItem}
-                  filterList={props.filterList}
-                  activeFilters={props.activeFilters}
-                  setActiveFilters={props.setActiveFilters}
-                />
-              );
-            })}
-        </div>
-      )}
+      <div>
+        {listToFilter &&
+          listToFilter.map((filterItem, key: number) => {
+            return (
+              <Filter
+                key={key}
+                toggleFilters={toggleFilters}
+                filterItem={filterItem}
+                filterList={props.filterList}
+                activeFilters={props.activeFilters}
+                setActiveFilters={props.setActiveFilters}
+              />
+            );
+          })}
+      </div>
     </div>
   );
 };

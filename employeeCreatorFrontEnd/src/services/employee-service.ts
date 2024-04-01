@@ -15,7 +15,6 @@ export interface Employee {
   currentlyEmployed: boolean;
 }
 
-const successNotify = (message: String) => toast.success(message);
 const failNotify = (message: String) => toast.error(message);
 
 export const getAllEmployees = async () => {
@@ -40,7 +39,6 @@ export const addEmployee = async (EmployeeData: any) => {
     failNotify("Failed to add employee");
     throw new Error("Failed to add employee");
   }
-  successNotify("Employee added!");
   return response.json();
 };
 
@@ -56,7 +54,6 @@ export const editEmployee = async (id: number, employeeData: any) => {
     failNotify("Failed to edit employee details");
     throw new Error("Failed to edit employee details");
   }
-  successNotify("Employee details edited");
   return response.json();
 };
 
@@ -68,6 +65,5 @@ export const deleteEmployee = async (id: number) => {
     failNotify("Failed to delete employee");
     throw new Error("Failed to delete employee");
   }
-  successNotify("Employee deleted");
   return null;
 };
