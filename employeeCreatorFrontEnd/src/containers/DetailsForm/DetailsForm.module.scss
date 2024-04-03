@@ -1,0 +1,82 @@
+.formContainer {
+  overflow-y: auto;
+  width: 40vw;
+  margin-top: 10px;
+  border-right: 1px solid rgb(150, 150, 150);
+  border-bottom: 1px solid rgb(150, 150, 150);
+}
+
+.TaskLine {
+  width: 80%;
+  margin-bottom: 3%;
+  text-align: left;
+}
+
+.Field {
+  width: 100%;
+  padding-left: 10px;
+}
+
+.Field:hover {
+  color: white;
+  cursor: pointer;
+}
+
+input {
+  background-color: black;
+  border: none;
+  color: lightgreen;
+  font-family: "Workbench", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 20px;
+  font-variation-settings: "BLED" 0, "SCAN" 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.optionSelector {
+  background: none;
+  background-color: black;
+  color: lightgreen;
+  outline: none;
+  font-family: "Workbench", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "BLED" 0, "SCAN" 0;
+}
+
+.formButton {
+  border: 1px solid green;
+  background: none;
+  color: lightgreen;
+  font-family: "Workbench", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 20px;
+  font-variation-settings: "BLED" 0, "SCAN" 0;
+  padding: 10px;
+}
+
+.formButton:hover {
+  background-color: green;
+  color: white;
+  cursor: pointer;
+}
+
+input:focus {
+  background-color: green;
+  color: white;
+  cursor: pointer;
+  outline: 2px solid transparent;
+}

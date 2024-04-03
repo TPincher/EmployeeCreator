@@ -1,0 +1,48 @@
+.menuContainer {
+  background-color: rgb(65, 65, 65);
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.testButton {
+  border: none;
+  border-right: 1px solid rgb(150, 150, 150);
+  border-bottom: 1px solid rgb(150, 150, 150);
+  border-left: 1px solid black;
+  width: 90%;
+  padding: 15px;
+  background: linear-gradient(
+    to bottom,
+    black 0%,
+    rgb(65, 65, 65) 2%,
+    rgb(150, 150, 150) 20%,
+    rgb(65, 65, 65) 100%
+  );
+}
+
+.testButton:hover {
+  color: lightgreen;
+  cursor: pointer;
+  background: linear-gradient(
+    to bottom,
+    black 0%,
+    rgb(25, 25, 25) 2%,
+    rgb(110, 110, 110) 20%,
+    rgb(25, 25, 25) 100%
+  );
+}
+
+.console {
+  overflow-y: auto;
+  border: none;
+  font-size: small;
+  width: 84%;
+  padding: 3%;
+  border-right: 1px solid rgb(150, 150, 150);
+  border-bottom: 1px solid rgb(150, 150, 150);
+  height: 40%;
+  background: black;
+  resize: none;
+}
