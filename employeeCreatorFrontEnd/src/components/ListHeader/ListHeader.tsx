@@ -1,4 +1,3 @@
-// import { useEffect } from "react";
 import Filter from "../Filter/Filter";
 import styles from "./ListHeader.module.scss";
 
