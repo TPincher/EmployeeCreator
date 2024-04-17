@@ -60,7 +60,6 @@ export const testEmployees: Employee[] = [
 
 export const EmployeeGenerator = async (data: Employee[]) => {
   data.map((employee: Employee) => {
-    console.log(employee);
     addEmployee(employee);
   });
 };
